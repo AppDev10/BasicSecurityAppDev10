@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.shape.*?>
+<?import javafx.scene.control.*?>
+<?import java.lang.*?>
+<?import javafx.scene.layout.*?>
+
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="705.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Pane fx:id="topPane" id="TopPane" prefHeight="77.0" prefWidth="600.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
+         <children>
+            <Label layoutX="14.0" layoutY="14.0" text="TWO - THINK" />
+            <Label layoutX="14.0" layoutY="37.0" text="SECURE FILE UPLOAD" />
+         </children>
+      </Pane>
+   </top>
+   <center>
+      <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
+         <children>
+            <RadioButton layoutX="43.0" layoutY="44.0" mnemonicParsing="false" selected="true" text="Decrypt">
+               <toggleGroup>
+                  <ToggleGroup fx:id="encryption" />
+               </toggleGroup>
+            </RadioButton>
+            <RadioButton layoutX="210.0" layoutY="44.0" mnemonicParsing="false" text="Encrypt" toggleGroup="$encryption" />
+            <TableView editable="true" layoutX="43.0" layoutY="87.0" prefHeight="158.0" prefWidth="615.0">
+              <columns>
+                <TableColumn prefWidth="75.0" text="File name" />
+                <TableColumn prefWidth="75.0" text="Size" />
+                  <TableColumn prefWidth="75.0" text="Type" />
+              </columns>
+            </TableView>
+            <Button layoutX="43.0" layoutY="289.0" mnemonicParsing="false" text="Add files" />
+            <Button layoutX="158.0" layoutY="289.0" mnemonicParsing="false" text="Start upload" />
+            <Button layoutX="271.0" layoutY="289.0" mnemonicParsing="false" text="Cancel upload" />
+         </children>
+      </Pane>
+   </center>
+</BorderPane>
