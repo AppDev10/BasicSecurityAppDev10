@@ -19,8 +19,11 @@ public class FDecryptor {
         cipherAES = Cipher.getInstance("AES");
     }
 
-    public byte[] decrypt(byte[] input, Key key) throws BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
-        return decryptRSA(input,key);
+    public byte[] decrypt(FTotalPacket bigBox, Key privateBkey, Key publicAkey) throws BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
+        byte[] decryptedHash;
+        Key decryptedKey;
+
+        return null;
     }
 
     private byte[] decryptRSA(byte[] input, Key key) throws BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
