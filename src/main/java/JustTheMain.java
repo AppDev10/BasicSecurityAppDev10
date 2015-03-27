@@ -30,14 +30,27 @@ public class JustTheMain extends Application {
         }
 
         byte[] input = new String("waffels").getBytes();
-        KeyPairGenerator kpg = KeyPairGenerator.getInstance("RSA");
-        kpg.initialize(2048);
-        KeyPair kp = kpg.genKeyPair();
-        Key pubKey = kp.getPublic();
-        Key privKey = kp.getPrivate();
+        KeyPairGenerator kpgA = KeyPairGenerator.getInstance("RSA");
+        kpgA.initialize(2048);
+        KeyPair kpA = kpgA.genKeyPair();
+        Key pubKeyA = kpA.getPublic();
+        Key privKeyA = kpA.getPrivate();
 
-        KeyGenerator desKeyGen = KeyGenerator.getInstance("AES");
-        Key desKey = desKeyGen.generateKey();
+        KeyPairGenerator kpgB = KeyPairGenerator.getInstance("RSA");
+        kpgB.initialize(2048);
+        KeyPair kpB = kpgB.genKeyPair();
+        Key pubKeyB = kpB.getPublic();
+        Key privKeyB = kpB.getPrivate();
+
+        FEncryptor enco = new FEncryptor();
+        FDecryptor deco = new FDecryptor();
+
+        FTotalPacket bigbox = enco.encrypt(input, pubKeyB, privKeyA);
+
+        byte[] back = deco.decrypt(bigbox, privKeyB, pubKeyA);
+
+        String toDis = new String(back);
+        System.out.println(toDis);
 
         /*byte[] cipherText = (new FEncryptor()).encrypt(input, pubKey);
         System.out.println("cipherRSA: " + new String(cipherText));

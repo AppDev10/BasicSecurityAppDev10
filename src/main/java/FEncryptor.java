@@ -55,7 +55,7 @@ public class FEncryptor {
         return encrypted;
     }
 
-    public byte[] sha1(byte[] input) throws NoSuchAlgorithmException {
+    public static byte[] sha1(byte[] input) throws NoSuchAlgorithmException {
         MessageDigest mDigest = MessageDigest.getInstance("SHA1");
         byte[] result = mDigest.digest(input);
 
