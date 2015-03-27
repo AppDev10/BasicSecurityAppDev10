@@ -4,6 +4,7 @@ import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.security.InvalidKeyException;
 import java.security.Key;
+import java.security.MessageDigest;
 import java.security.NoSuchAlgorithmException;
 
 /**
@@ -15,7 +16,7 @@ public class FEncryptor {
 
     public FEncryptor() throws NoSuchAlgorithmException, NoSuchPaddingException {
         cipherRSA = Cipher.getInstance("RSA");
-        cipherDES = Cipher.getInstance("DES");
+        cipherDES = Cipher.getInstance("AES");
     }
 
     public byte[] encrypt(byte[] input, Key key) throws InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
@@ -36,5 +37,12 @@ public class FEncryptor {
         byte[] encrypted = cipherDES.doFinal(input);
 
         return encrypted;
+    }
+
+    public byte[] sha1(byte[] input) throws NoSuchAlgorithmException {
+        MessageDigest mDigest = MessageDigest.getInstance("SHA1");
+        byte[] result = mDigest.digest(input);
+
+        return result;
     }
 }

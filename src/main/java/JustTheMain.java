@@ -24,7 +24,7 @@ public class JustTheMain {
         Key pubKey = kp.getPublic();
         Key privKey = kp.getPrivate();
 
-        KeyGenerator desKeyGen = KeyGenerator.getInstance("DES");
+        KeyGenerator desKeyGen = KeyGenerator.getInstance("AES");
         Key desKey = desKeyGen.generateKey();
 
         /*byte[] cipherText = (new FEncryptor()).encrypt(input, pubKey);
@@ -38,6 +38,8 @@ public class JustTheMain {
 
         byte[] plainText = (new FDecryptor()).decryptDES(cipherText, desKey);
         System.out.println("plain : " + new String(plainText));
+
+        System.out.println( new String((new FEncryptor()).sha1(plainText)) );
 
     }
 

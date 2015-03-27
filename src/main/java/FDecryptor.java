@@ -16,7 +16,7 @@ public class FDecryptor {
 
     public FDecryptor() throws NoSuchPaddingException, NoSuchAlgorithmException {
         cipherRSA = Cipher.getInstance("RSA");
-        cipherDES = Cipher.getInstance("DES");
+        cipherDES = Cipher.getInstance("AES");
     }
 
     public byte[] decrypt(byte[] input, Key key) throws BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
