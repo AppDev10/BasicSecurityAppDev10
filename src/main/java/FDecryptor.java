@@ -12,11 +12,11 @@ import java.security.NoSuchAlgorithmException;
 public class FDecryptor {
 
     Cipher cipherRSA = null;
-    Cipher cipherDES = null;
+    Cipher cipherAES = null;
 
     public FDecryptor() throws NoSuchPaddingException, NoSuchAlgorithmException {
         cipherRSA = Cipher.getInstance("RSA");
-        cipherDES = Cipher.getInstance("AES");
+        cipherAES = Cipher.getInstance("AES");
     }
 
     public byte[] decrypt(byte[] input, Key key) throws BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
@@ -30,10 +30,10 @@ public class FDecryptor {
         return decrypted;
     }
 
-    public byte[] decryptDES(byte[] input, Key key) throws InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+    public byte[] decryptAES(byte[] input, Key key) throws InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
 
-        cipherDES.init(Cipher.DECRYPT_MODE, key);
-        byte[] encrypted = cipherDES.doFinal(input);
+        cipherAES.init(Cipher.DECRYPT_MODE, key);
+        byte[] encrypted = cipherAES.doFinal(input);
 
         return encrypted;
     }

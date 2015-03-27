@@ -1,6 +1,5 @@
 import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
-import javafx.fxml.Initializable;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
 import javafx.scene.Scene;
@@ -11,13 +10,8 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
-import java.io.IOException;
-import java.net.URL;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
-import java.util.ResourceBundle;
-
-import static javafx.application.Application.launch;
 
 /**
  * Created by 11302014 on 19/03/2015.
@@ -50,14 +44,6 @@ public class JustTheMain extends Application {
 
         byte[] plainText = (new FDecryptor()).decrypt(cipherText, privKey);
         System.out.println("plain : " + new String(plainText));*/
-
-        byte[] cipherText = (new FEncryptor()).encryptDES(input, desKey);
-        System.out.println("cipherRSA: " + new String(cipherText));
-
-        byte[] plainText = (new FDecryptor()).decryptDES(cipherText, desKey);
-        System.out.println("plain : " + new String(plainText));
-
-        System.out.println( new String((new FEncryptor()).sha1(plainText)) );
 
     }
 
