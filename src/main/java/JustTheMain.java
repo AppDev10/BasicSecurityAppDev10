@@ -28,7 +28,7 @@ public class JustTheMain extends Application {
         launch(args);
 
 
-
+/*
         Provider[] providers = Security.getProviders();
 
         for (Provider p : providers) {
@@ -49,7 +49,7 @@ public class JustTheMain extends Application {
         System.out.println("cipherRSA: " + new String(cipherText));
 
         byte[] plainText = (new FDecryptor()).decrypt(cipherText, privKey);
-        System.out.println("plain : " + new String(plainText));*/
+        System.out.println("plain : " + new String(plainText));
 
         byte[] cipherText = (new FEncryptor()).encryptDES(input, desKey);
         System.out.println("cipherRSA: " + new String(cipherText));
@@ -59,6 +59,8 @@ public class JustTheMain extends Application {
 
         System.out.println( new String((new FEncryptor()).sha1(plainText)) );
 
+
+        */
     }
 
     public static String printProvider(Provider provider) {
