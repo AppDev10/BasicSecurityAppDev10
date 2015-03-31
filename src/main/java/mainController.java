@@ -76,11 +76,9 @@ public class mainController implements Initializable {
 
         for (FileFormaty file : data) {
             if(file.getFile().equals(fileFormaty.getFile())){
-                System.out.println("same");
                 return false;
             }
         }
-        System.out.println("diff");
         return true;
     }
 
