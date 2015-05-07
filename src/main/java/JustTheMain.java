@@ -8,8 +8,8 @@ import javafx.stage.Stage;
 
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
-import javax.crypto.KeyGenerator;
 import javax.crypto.NoSuchPaddingException;
+import java.io.IOException;
 import java.security.*;
 import java.security.spec.InvalidKeySpecException;
 
@@ -18,16 +18,13 @@ import java.security.spec.InvalidKeySpecException;
  */
 public class JustTheMain extends Application {
 
-    public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, NoSuchProviderException, NoSuchPaddingException {
+    public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, NoSuchProviderException, NoSuchPaddingException, IOException, ClassNotFoundException {
         launch(args);
-
-
-
-        Provider[] providers = Security.getProviders();
+        /*Provider[] providers = Security.getProviders();
 
         for (Provider p : providers) {
             System.out.println(printProvider(p));
-        }
+        }*/
 
         byte[] input = new String("waffels").getBytes();
         KeyPairGenerator kpgA = KeyPairGenerator.getInstance("RSA");
@@ -47,10 +44,17 @@ public class JustTheMain extends Application {
 
         FTotalPacket bigbox = enco.encrypt(input, pubKeyB, privKeyA);
 
-        byte[] back = deco.decrypt(bigbox, privKeyB, pubKeyA);
+        (new Thread(new FServer(privKeyB))).start();
+
+        (new Thread(new FClient("127.0.0.1", bigbox))).start();
+        FTotalPacket test = FTotalPacket.readEncBuf();
+
+        byte[] back = deco.decrypt(test, privKeyB, pubKeyA);
 
         String toDis = new String(back);
         System.out.println(toDis);
+
+
 
         /*byte[] cipherText = (new FEncryptor()).encrypt(input, pubKey);
         System.out.println("cipherRSA: " + new String(cipherText));
