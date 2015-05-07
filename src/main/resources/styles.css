@@ -1,3 +1,230 @@
-#topPane {
-    -fx-background-color: #000000;
+#bg {
+    -fx-background: #f2f2f2;
+}
+
+#panel{
+ -fx-background: #f2f2f2;
+}
+
+
+
+#addFiles{
+-fx-background-color:#f1c40f;
+ -fx-background-radius: 3;
+     -fx-background-insets: 0;
+     -fx-text-fill: white;
+     -fx-font-size: 13px;
+     -fx-padding: 10px;
+      -fx-cursor: hand;
+
+}
+#addFiles:hover{
+  -fx-background-color:#face1c;
+}
+
+#upload{
+-fx-background-color:#52b140;
+ -fx-background-radius: 3;
+     -fx-background-insets: 0;
+     -fx-text-fill: white;
+     -fx-font-size: 13px;
+     -fx-padding: 10px;
+      -fx-cursor: hand;
+
+}
+
+#upload:hover{
+-fx-background-color:#5bcd46;
+
+}
+
+#cancel{
+-fx-background-color:#f14f0f;
+ -fx-background-radius: 3;
+     -fx-background-insets: 0;
+     -fx-text-fill: white;
+     -fx-font-size: 13px;
+     -fx-padding: 10px;
+      -fx-cursor: hand;
+
+}
+
+#cancel:hover{
+-fx-background-color:#fc6226;
+}
+
+
+
+/* TABEL STYLING */
+
+.table-view {
+    -fx-background-color: transparent;  -fx-table-cell-border-color: transparent;
+
+
+}
+
+.table-view .filler{
+
+    -fx-background-color: transparent;
+
+}
+
+
+
+.table-view .column-header .label{
+    /* Tekst in de header  */
+     -fx-text-fill: #fff;
+     -fx-font-weight: bold;
+     -fx-alignment: center;
+    /*-fx-padding: 0.0 0.0 0.0 10.0;*/
+}
+
+
+.table-view .column-header{
+    /* header transparant maken */
+     -fx-background-color: transparent;
+     -fx-cursor: hand;
+     -fx-pref-height: 45.0px;
+}
+
+
+
+.table-view .column-header-background {
+    /* StackPane */
+     -fx-background-color: #c1c1c1;
+     -fx-background-radius: 3;
+}
+
+.table-view > .column-header-background > .filler {
+    /* Region - area of header not taken by column headers */
+    -fx-background-color: #c1c1c1;
+    -fx-background-radius: 3;
+}
+
+
+
+.table-row-cell:filled:even{
+    -fx-background-color: #dedddd;
+}
+.table-row-cell:filled:odd{
+    -fx-background-color: #ebe9e9;
+}
+
+.table-row-cell .text{
+
+    -fx-fill: #2a2a2a;
+}
+
+.table-view .column-header-background {
+  -fx-background-radius: 5.0 5.0 0.0 0.0;
+    -fx-background-color: #c1c1c1;
+}
+
+.table-row-cell .table-column{
+    -fx-border-width: 1.0;
+    -fx-alignment: center-left;
+}
+
+.table-row-cell {
+    -fx-background-color: transparent;
+    -fx-border-width: 0.0;
+    /*-fx-padding: 0.0 0.0 0.0 10.0;*/
+    -fx-pref-height: 45.0px;
+
+}
+
+.table-view .scroll-bar:horizontal {
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+.table-view .scroll-bar:vertical{
+    -fx-padding: 0.0 0.0 0.0 0.0;
+}
+
+
+.table-view:row-selection .table-row-cell:filled:hover {
+    -fx-background-color: #1abc9c;
+}
+.table-view:row-selection .table-row-cell:filled:hover .text{
+    -fx-fill: white;
+}
+
+/* Styling wanneer op info click
+.table-row-cell:filled:focused {
+    -fx-background-color: #caf7ee;
+    -fx-background-insets: 0.0;
+
+}
+.table-row-cell:filled:focused .text{
+    -fx-fill: white;
+}*/
+
+
+.table-view .show-hide-columns-button{
+    -fx-background-color: #27A5F9;
+}
+.table-view .column-drag-header{
+    -fx-background-color: #27A5F9;
+    -fx-cursor: h-resize;
+}
+.table-view .column-resize-line{
+    -fx-text-fill: white;
+    -fx-background-color: white;
+    -fx-fill: white;
+    -fx-border-color: white;
+    -fx-border-width: 1;
+}
+.table-view .column-header .sort-order{
+    -fx-text-fill: white;
+    -fx-fill: white;
+}
+.table-view .placeholder{
+     -fx-background-color: white;
+}
+.table-view .placeholder .label {
+    -fx-font-size: 1.1em;
+    -fx-font-weight: bold;
+    -fx-text-fill: #27A5F9;
+    -fx-alignment: center;
+}
+.table-view .virtualflow{
+    -fx-background-color: white;
+}
+
+.table-view .arrow {
+-fx-background-color: white;
+
+}
+
+
+
+/* RADIO BUTTON STYLING */
+
+.radio-button .radio {
+
+    -fx-background-color: c1c1c1;
+    -fx-background-image: null;
+    -fx-border-radius: 12px;
+    -fx-padding: 5px;
+     -fx-cursor: hand;
+}
+.radio-button .radio:selected {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:armed {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:determinate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button -radio:indeterminate {
+    -fx-background-color: white;
+    -fx-background-image: null;
+}
+.radio-button .dot {
+    -fx-background-radius: 12px;
+    -fx-padding: 5px;
 }
