@@ -19,7 +19,7 @@ import java.security.spec.InvalidKeySpecException;
 public class JustTheMain extends Application {
 
     public static void main(String[] args) throws NoSuchAlgorithmException, InvalidKeyException, BadPaddingException, IllegalBlockSizeException, InvalidKeySpecException, NoSuchProviderException, NoSuchPaddingException, IOException, ClassNotFoundException {
-        launch(args);
+        //launch(args);
         /*Provider[] providers = Security.getProviders();
 
         for (Provider p : providers) {
@@ -39,22 +39,10 @@ public class JustTheMain extends Application {
         Key pubKeyB = kpB.getPublic();
         Key privKeyB = kpB.getPrivate();
 
-        FEncryptor enco = new FEncryptor();
-        FDecryptor deco = new FDecryptor();
 
-        FTotalPacket bigbox = enco.encrypt(input, pubKeyB, privKeyA);
+        new FServer(privKeyB,pubKeyB).start();
 
-        (new Thread(new FServer(privKeyB))).start();
-
-        (new Thread(new FClient("127.0.0.1", bigbox))).start();
-        FTotalPacket test = FTotalPacket.readEncBuf();
-
-        byte[] back = deco.decrypt(test, privKeyB, pubKeyA);
-
-        String toDis = new String(back);
-        System.out.println(toDis);
-
-
+        new FClient("127.0.0.1", input, "testje123.txt", privKeyA, pubKeyA).start();
 
         /*byte[] cipherText = (new FEncryptor()).encrypt(input, pubKey);
         System.out.println("cipherRSA: " + new String(cipherText));

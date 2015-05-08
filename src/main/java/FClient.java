@@ -1,34 +1,25 @@
-<<<<<<< HEAD
 import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.InputStream;
-=======
-import java.io.FileInputStream;
-import java.io.IOException;
->>>>>>> origin/master
 import java.io.OutputStream;
 import java.net.InetAddress;
 import java.net.Socket;
 import java.net.UnknownHostException;
-<<<<<<< HEAD
 import java.security.InvalidKeyException;
 import java.security.Key;
 import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
-=======
->>>>>>> origin/master
 
 /**
  * Created by 11302014 on 4/05/2015.
  */
 public class FClient implements Runnable {
 
-<<<<<<< HEAD
     private Key myPrivateKey = null;
     private Key myPublicKey = null;
     private String ip = "127.0.0.1";
@@ -44,25 +35,13 @@ public class FClient implements Runnable {
 
         this.file = toSend;
         this.fileName = fileName;
-=======
-    private String ip = "127.0.0.1";
-    public static final int port = 11111;
-
-    public FClient(String ip, FTotalPacket toSend) {
-        super();
->>>>>>> origin/master
-
-        this.ip = ip;
     }
 
-<<<<<<< HEAD
     public void start() {
         Thread buf = new Thread(this);
         buf.start();
     }
 
-=======
->>>>>>> origin/master
     @Override
     public void run() {
         InetAddress address = null;
@@ -71,7 +50,7 @@ public class FClient implements Runnable {
             Socket connection = new Socket(address, port);
 
             OutputStream output = connection.getOutputStream();
-<<<<<<< HEAD
+
             InputStream input = connection.getInputStream();
 
             byte[] buffer = new byte[1024*1024];
@@ -108,18 +87,12 @@ public class FClient implements Runnable {
 
             //versturen van file
             System.out.println("Client: versturen file...");
-=======
 
-            FileInputStream fileInputStream = new FileInputStream("buf.enc");
-            byte[] buffer = new byte[1024*1024];
-            int bytesRead = 0;
-
->>>>>>> origin/master
             while((bytesRead = fileInputStream.read(buffer))>0)
             {
                 output.write(buffer,0,bytesRead);
             }
-<<<<<<< HEAD
+
             output.flush();
 
             output.close();
@@ -127,8 +100,6 @@ public class FClient implements Runnable {
             connection.close();
 
             System.out.println("Client: done!");
-=======
->>>>>>> origin/master
 
             fileInputStream.close();
 
@@ -136,7 +107,6 @@ public class FClient implements Runnable {
             e.printStackTrace();
         } catch (IOException e) {
             e.printStackTrace();
-<<<<<<< HEAD
         } catch (NoSuchAlgorithmException e) {
             e.printStackTrace();
         } catch (NoSuchPaddingException e) {
@@ -149,8 +119,6 @@ public class FClient implements Runnable {
             e.printStackTrace();
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
-=======
->>>>>>> origin/master
         }
 
     }

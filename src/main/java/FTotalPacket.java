@@ -23,7 +23,6 @@ public class FTotalPacket implements Serializable {
         out.close();
     }
 
-<<<<<<< HEAD
     public static void writeFile(byte[] toWrite, String name) throws IOException {
         FileOutputStream out = new FileOutputStream(name);
         out.write(toWrite);
@@ -31,8 +30,6 @@ public class FTotalPacket implements Serializable {
         out.close();
     }
 
-=======
->>>>>>> origin/master
     public static FTotalPacket readEncBuf() throws IOException, ClassNotFoundException {
         ObjectInputStream in = new ObjectInputStream(new FileInputStream("buf.enc"));
         FTotalPacket readed = (FTotalPacket) in.readObject();
