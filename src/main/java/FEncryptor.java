@@ -40,7 +40,7 @@ public class FEncryptor {
         return new FTotalPacket(encryptedData,encryptedKey,signedHash);
     }
 
-    private byte[] encryptRSA(byte[] input, Key key) throws InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
+    public byte[] encryptRSA(byte[] input, Key key) throws InvalidKeyException, BadPaddingException, IllegalBlockSizeException {
         cipherRSA.init(Cipher.ENCRYPT_MODE, key);
         byte[] encryptedInput = cipherRSA.doFinal(input);
 

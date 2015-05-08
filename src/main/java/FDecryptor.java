@@ -43,7 +43,7 @@ public class FDecryptor {
         return decryptedFile;
     }
 
-    private byte[] decryptRSA(byte[] input, Key key) throws BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
+    public byte[] decryptRSA(byte[] input, Key key) throws BadPaddingException, IllegalBlockSizeException, InvalidKeyException {
         cipherRSA.init(Cipher.DECRYPT_MODE, key);
         byte[] decrypted = cipherRSA.doFinal(input);
 
