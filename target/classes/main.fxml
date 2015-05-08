@@ -6,7 +6,9 @@
 <?import javafx.scene.layout.*?>
 
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="705.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1">
+<?import javafx.scene.control.cell.PropertyValueFactory?>
+<?import java.net.URL?>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="479.0" prefWidth="705.0" stylesheets="@styles.css" xmlns="http://javafx.com/javafx/8" xmlns:fx="http://javafx.com/fxml/1" fx:controller="mainController">
    <top>
       <Pane fx:id="topPane" id="TopPane" prefHeight="77.0" prefWidth="600.0" stylesheets="@styles.css" BorderPane.alignment="CENTER">
          <children>
@@ -18,23 +20,38 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <RadioButton layoutX="43.0" layoutY="44.0" mnemonicParsing="false" selected="true" text="Decrypt">
+            <RadioButton fx:id="decrypt" layoutX="43.0" layoutY="44.0" mnemonicParsing="false" selected="true" text="Decrypt">
                <toggleGroup>
                   <ToggleGroup fx:id="encryption" />
                </toggleGroup>
             </RadioButton>
-            <RadioButton layoutX="210.0" layoutY="44.0" mnemonicParsing="false" text="Encrypt" toggleGroup="$encryption" />
-            <TableView editable="true" layoutX="43.0" layoutY="87.0" prefHeight="158.0" prefWidth="615.0">
+            <RadioButton fx:id="encrypt" layoutX="210.0" layoutY="44.0" mnemonicParsing="false" text="Encrypt" toggleGroup="$encryption" />
+            <TableView fx:id="filesView" editable="true" layoutX="43.0" layoutY="87.0" prefHeight="158.0" prefWidth="615.0">
               <columns>
-                <TableColumn prefWidth="75.0" text="File name" />
-                <TableColumn prefWidth="75.0" text="Size" />
-                  <TableColumn prefWidth="75.0" text="Type" />
+                <TableColumn prefWidth="75.0" text="File name">
+                    <cellValueFactory>
+                        <PropertyValueFactory property="fileName"/>
+                    </cellValueFactory>
+                </TableColumn>
+                <TableColumn prefWidth="75.0" text="Size" >
+                    <cellValueFactory>
+                        <PropertyValueFactory property="fileSize"/>
+                    </cellValueFactory>
+                </TableColumn>
+                  <TableColumn prefWidth="75.0" text="Type" >
+                      <cellValueFactory>
+                          <PropertyValueFactory property="extention"/>
+                      </cellValueFactory>
+                  </TableColumn>
               </columns>
             </TableView>
-            <Button layoutX="43.0" layoutY="289.0" mnemonicParsing="false" text="Add files" />
-            <Button layoutX="158.0" layoutY="289.0" mnemonicParsing="false" text="Start upload" />
-            <Button layoutX="271.0" layoutY="289.0" mnemonicParsing="false" text="Cancel upload" />
+            <Button fx:id="addFiles" layoutX="43.0" layoutY="289.0" mnemonicParsing="false" text="Add files" />
+            <Button fx:id="upload" layoutX="158.0" layoutY="289.0" mnemonicParsing="false" text="Start upload" />
+            <Button fx:id="cancel" layoutX="271.0" layoutY="289.0" mnemonicParsing="false" text="Cancel upload" />
          </children>
       </Pane>
    </center>
+    <stylesheets>
+        <URL value="@styles.css" />
+    </stylesheets>
 </BorderPane>
