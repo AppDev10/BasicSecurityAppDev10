@@ -1,4 +1,5 @@
 import javafx.application.Application;
+import javafx.application.Platform;
 import javafx.fxml.FXMLLoader;
 import javafx.geometry.Rectangle2D;
 import javafx.scene.Parent;
@@ -26,7 +27,7 @@ public class JustTheMain extends Application {
             System.out.println(printProvider(p));
         }*/
 
-        byte[] input = new String("waffels").getBytes();
+        /*byte[] input = new String("waffels").getBytes();
         KeyPairGenerator kpgA = KeyPairGenerator.getInstance("RSA");
         kpgA.initialize(2048);
         KeyPair kpA = kpgA.genKeyPair();
@@ -50,6 +51,7 @@ public class JustTheMain extends Application {
         byte[] plainText = (new FDecryptor()).decrypt(cipherText, privKey);
         System.out.println("plain : " + new String(plainText));*/
 
+        launch(args);
     }
 
     public static String printProvider(Provider provider) {
@@ -67,8 +69,7 @@ public class JustTheMain extends Application {
 
         primaryStage.setX(primaryScreenBounds.getMinX());
         primaryStage.setY(primaryScreenBounds.getMinY());
-        primaryStage.setWidth(primaryScreenBounds.getWidth());
-        primaryStage.setHeight(primaryScreenBounds.getHeight());
+        primaryStage.setFullScreen(true);
 
 
 

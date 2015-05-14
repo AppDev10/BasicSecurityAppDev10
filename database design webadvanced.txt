@@ -1,0 +1,47 @@
+NEWS: 
+id
+Title
+text (small)
+text (full)
+image?
+slug
+
+
+USERS:
+id
+username
+password
+name
+firstname
+
+
+EVENTS:
+id
+title
+text (small)
+image (small)
+text (full)
+header image
+image
+longlitude 
+latitude
+eventLocation
+eventDate
+date
+list of speakers (met foto)	--> miss andere tabel?
+slug
+
+POSTS:
+id
+title
+text
+image
+userid
+list of comments
+slug
+
+
+COMMENTS:
+id
+text
+userid

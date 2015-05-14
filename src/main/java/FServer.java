@@ -2,10 +2,7 @@ import javax.crypto.BadPaddingException;
 import javax.crypto.IllegalBlockSizeException;
 import javax.crypto.NoSuchPaddingException;
 
-import java.io.FileOutputStream;
-import java.io.IOException;
-import java.io.InputStream;
-import java.io.OutputStream;
+import java.io.*;
 
 import java.net.ServerSocket;
 import java.net.Socket;
@@ -15,6 +12,8 @@ import java.security.KeyFactory;
 import java.security.NoSuchAlgorithmException;
 import java.security.spec.InvalidKeySpecException;
 import java.security.spec.X509EncodedKeySpec;
+import java.util.zip.ZipEntry;
+import java.util.zip.ZipInputStream;
 
 
 /**
@@ -91,9 +90,17 @@ public class FServer implements Runnable {
                 System.out.println("Server: file decrypteren...");
                 byte[] unencryptedFile = fDecryptor.decrypt(received, myPrivateKey, otherPublicKey);
 
+
                 //file weg schrijven
                 System.out.println("Server: gedecrypte file wegschrijven");
-                FTotalPacket.writeFile(unencryptedFile,received.getName());
+
+                /// save file dialog waar de nieuwe file moet komen
+                FTotalPacket.writeFile(unencryptedFile, received.getName());
+
+                //als.zip decrypten
+                System.out.println("Server: Zipfile uitpakken...");
+                unzip(received.getName());
+
 
                 System.out.println("Server: Done!");
             }
@@ -112,5 +119,47 @@ public class FServer implements Runnable {
         } catch (InvalidKeySpecException e) {
             e.printStackTrace();
         }
+    }
+
+    private void unzip (String zipFile) {
+
+        byte[] buffer = new byte[1024];
+
+        File folder = new File ("");
+        if (!folder.exists()) {
+            folder.mkdir();
+        }
+
+        try {
+            ZipInputStream zis = new ZipInputStream(new FileInputStream(zipFile));
+            ZipEntry ze = zis.getNextEntry();
+
+            while (ze!=null) {
+                String fileName = ze.getName();
+                System.out.println(ze.getName());
+                File newFile = new File(fileName);
+
+                new File (newFile.getParent()).mkdirs();
+
+                FileOutputStream fos = new FileOutputStream(newFile.getName());
+
+                int len;
+                while ((len = zis.read(buffer))>0) {
+                    fos.write(buffer,0,len);
+                }
+
+                fos.close();
+                ze = zis.getNextEntry();
+            }
+
+            zis.closeEntry();
+            zis.close();
+
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
     }
 }

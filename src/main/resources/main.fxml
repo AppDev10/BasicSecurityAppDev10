@@ -20,12 +20,6 @@
    <center>
       <Pane prefHeight="200.0" prefWidth="200.0" BorderPane.alignment="CENTER">
          <children>
-            <RadioButton fx:id="decrypt" layoutX="43.0" layoutY="44.0" mnemonicParsing="false" selected="true" text="Decrypt">
-               <toggleGroup>
-                  <ToggleGroup fx:id="encryption" />
-               </toggleGroup>
-            </RadioButton>
-            <RadioButton fx:id="encrypt" layoutX="210.0" layoutY="44.0" mnemonicParsing="false" text="Encrypt" toggleGroup="$encryption" />
             <TableView fx:id="filesView" editable="true" layoutX="43.0" layoutY="87.0" prefHeight="158.0" prefWidth="615.0">
               <columns>
                 <TableColumn prefWidth="75.0" text="File name">
@@ -46,7 +40,7 @@
               </columns>
             </TableView>
             <Button fx:id="addFiles" layoutX="43.0" layoutY="289.0" mnemonicParsing="false" text="Add files" />
-            <Button fx:id="upload" layoutX="158.0" layoutY="289.0" mnemonicParsing="false" text="Start upload" />
+            <Button fx:id="upload" layoutX="158.0" layoutY="289.0" mnemonicParsing="false" text="Verzenden" />
             <Button fx:id="cancel" layoutX="271.0" layoutY="289.0" mnemonicParsing="false" text="Cancel upload" />
          </children>
       </Pane>

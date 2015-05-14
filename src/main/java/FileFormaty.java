@@ -8,6 +8,7 @@ public class FileFormaty {
     private String extention;
     private String fileSize;
     private String fileName;
+    private String filePath;
 
 
     public FileFormaty (File file) {
