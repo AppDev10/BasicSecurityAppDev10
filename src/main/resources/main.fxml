@@ -41,7 +41,7 @@
             </TableView>
             <Button fx:id="addFiles" layoutX="43.0" layoutY="289.0" mnemonicParsing="false" text="Add files" />
             <Button fx:id="upload" layoutX="158.0" layoutY="289.0" mnemonicParsing="false" text="Verzenden" />
-            <Button fx:id="cancel" layoutX="271.0" layoutY="289.0" mnemonicParsing="false" text="Cancel upload" />
+            <Button fx:id="remove" layoutX="271.0" layoutY="289.0" mnemonicParsing="false" text="Remove item" />
          </children>
       </Pane>
    </center>

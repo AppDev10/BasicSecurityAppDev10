@@ -1,18 +1,15 @@
-import javafx.collections.FXCollections;
+import javafx.beans.value.ChangeListener;
+import javafx.beans.value.ObservableValue;
 import javafx.collections.ObservableList;
 import javafx.event.EventHandler;
 import javafx.fxml.FXML;
 import javafx.fxml.Initializable;
-import javafx.scene.Parent;
-import javafx.scene.Scene;
 import javafx.scene.control.Button;
-import javafx.scene.control.RadioButton;
 import javafx.scene.control.TableView;
 import javafx.stage.FileChooser;
 import javafx.stage.Stage;
 
 import javax.crypto.NoSuchPaddingException;
-import java.awt.event.ActionEvent;
 import java.io.*;
 import java.net.URL;
 import java.security.Key;
@@ -21,7 +18,6 @@ import java.security.KeyPairGenerator;
 import java.security.NoSuchAlgorithmException;
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Observable;
 import java.util.ResourceBundle;
 import java.util.zip.ZipEntry;
 import java.util.zip.ZipOutputStream;
@@ -31,10 +27,10 @@ import java.util.zip.ZipOutputStream;
  */
 public class mainController implements Initializable {
 
-    @FXML private TableView filesView;
+    @FXML private TableView<FileFormaty> filesView;
     @FXML private Button addFiles;
     @FXML private Button upload;
-    @FXML private Button cancel;
+    @FXML private Button remove;
 
 
     private FServer myServer;
@@ -43,6 +39,7 @@ public class mainController implements Initializable {
     private Key myPublicKey = null;
 
     private ArrayList<FileFormaty> inFiles = new ArrayList<FileFormaty>();
+    private FileFormaty selectedFile;
 
 
     @Override
@@ -60,12 +57,21 @@ public class mainController implements Initializable {
                 handleUpload();
             }
         });
-        cancel.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
+        remove.setOnAction(new EventHandler<javafx.event.ActionEvent>() {
             @Override
             public void handle(javafx.event.ActionEvent event) {
-                handleCancel();
+                handleRemove();
             }
         });
+
+        filesView.getSelectionModel().selectedItemProperty().addListener(
+                new ChangeListener<FileFormaty>() {
+                    @Override
+                    public void changed(ObservableValue<? extends FileFormaty> observable, FileFormaty oldValue, FileFormaty newValue) {
+                        selectedFile = newValue;
+                    }
+                });
+
 
         getKeys();
 
@@ -213,7 +219,17 @@ public class mainController implements Initializable {
 
     }
 
-    public void handleCancel () {
-        System.out.println("cancel");
+    public void handleRemove() {
+        System.out.println("remove");
+
+        inFiles.remove(selectedFile);
+
+        ObservableList<FileFormaty> data = filesView.getItems();
+        filesView.getItems().clear();
+
+        for (FileFormaty file : inFiles) {
+                data.add(file);
+
+        }
     }
 }
